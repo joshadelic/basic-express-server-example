@@ -5,6 +5,6 @@ var kittySchema = new Schema({
   name: String
 });
 
-var Kitten = mongoose.model('Kitten', kittySchema, "kittens");
+var Kitten = mongoose.model('Kitten', kittySchema, 'kittens');
 
 module.exports = Kitten

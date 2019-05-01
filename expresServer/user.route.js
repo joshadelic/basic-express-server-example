@@ -2,7 +2,6 @@ const express = require('express')
 const userRoutes = express.Router()
 
 const Kitten = require('./kitty.model')
-
 const kittenQuery = Kitten.find({})
 
 userRoutes.route('/kittens').get( (req, res) => {
@@ -15,11 +14,9 @@ userRoutes.route('/kittens').get( (req, res) => {
 })
 
 userRoutes.route('/add').post( (req, res) => {
-  if (!req.name) {
-    res.status(400).send("invalid data, cocktail must have name")
-  } else {
-    res.status(200).send(req.body)
-  }
+  const newKitten = new Kitten({name: req.body.kitten})
+  newKitten.save()
+  res.status(200).send(req.body.kitten + " saved")
 })
 
 module.exports = userRoutes
